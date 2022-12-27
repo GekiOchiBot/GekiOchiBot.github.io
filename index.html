@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF=8">
+    <link rel="stylesheet" href="exe.css">
+    <title>execute変換器[detect対応]</title>
+    <h2 style="text-align: center;">execute変換器[detect対応]</h2>
+    <body>
+        <div style="color: rgb(0, 255, 30)">貼り付け場所<br></div>
+        <div style="color: red">※人の名前には対応していません。</div>
+<textarea id="js_txa" cols="60" rows="2" class="txa"></textarea>
+    <div class="radio" style="text-align: center;">
+        <label style="border: 3px red" class="label">
+        <input type="radio" name="my_radio" value="1" >エンティティとして実行する構文<br><br>
+    </label class="label">
+        <label style="border: 3px red" class="label">
+        <input type="radio" name="my_radio" value="2" >エンティティの位置を指定する構文<br><br>
+    </label class="label">
+        <label style="border: 3px red" class="label">
+        <input type="radio" name="my_radio" value="3"  checked>デフォルト
+    </label class="label">
+    </div>
+    <div style="color: rgb(0, 115, 255)">↓これをコピーしてください↓<br></div>
+    <button id="copy">コピーする</button>
+    <p id="msg" class="msg_out"></p>
+        
+
+        <script type="text/javascript">
+            (()=>{
+            //出力//
+            let msg = document.getElementById('msg');
+            const copyButton = document.getElementById('copy')
+
+            let elements = document.getElementsByName('my_radio');
+            let len = elements.length;
+            let checkValue = '';
+
+            copyButton.addEventListener('click', () => {
+                const tagValue = msg.value
+                copyToClipboard(tagValue)
+              })
+              
+              // クリップボードへコピー（コピーの処理）
+              function copyToClipboard (tagValue) {
+                if (navigator.clipboard) {
+                  return navigator.clipboard.writeText(tagValue).then(function () {
+                  })
+                } else {
+                  msg.select()
+                  document.execCommand('copy')
+                }
+              }
+
+            function inputChange(){
+                for (let i = 0; i < len; i++){
+                    if (elements.item(i).checked){
+                        checkValue = elements.item(i).value;
+                    }
+                }
+                let text = js_txa.value;
+                    if (checkValue == 3){
+                        
+                    msg.innerText = (text.split('execute').join('execute as'))
+                    msg.innerText = (msg.innerText.split('@s ~ ~ ~').join('@s at @s '))
+                    msg.innerText = (msg.innerText.split('@e ~ ~ ~').join('@e at @s '))
+                    msg.innerText = (msg.innerText.split('@r ~ ~ ~').join('@r at @s '))
+                    msg.innerText = (msg.innerText.split('@a ~ ~ ~').join('@a at @s '))
+                    msg.innerText = (msg.innerText.split('@intiator ~ ~ ~').join('@intiator at @s '))
+                    msg.innerText = (msg.innerText.split('* ~ ~ ~').join('* at @s '))
+                    msg.innerText = (msg.innerText.split('@p ~ ~ ~').join('@p at @s '))
+                    msg.innerText = (msg.innerText.split('] ~ ~ ~').join('] at @s '))
+                    msg.innerText = (msg.innerText.split('@s ~~~').join('@s at @s '))
+                    msg.innerText = (msg.innerText.split('@e ~~~').join('@e at @s '))
+                    msg.innerText = (msg.innerText.split('@r ~~~').join('@r at @s '))
+                    msg.innerText = (msg.innerText.split('@a ~~~').join('@a at @s '))
+                    msg.innerText = (msg.innerText.split('@intiator ~~~').join('@intiator at @s '))
+                    msg.innerText = (msg.innerText.split('* ~~~').join('* at @s '))
+                    msg.innerText = (msg.innerText.split('@p ~~~').join('@p at @s '))
+                    msg.innerText = (msg.innerText.split('] ~~~').join('] at @s '))
+                    msg.innerText = (msg.innerText.split(' detect').join(' if block '))
+                    msg.innerText = (msg.innerText.split(' ability').join(' run ability'))
+                    msg.innerText = (msg.innerText.split(' alwaysday').join(' run alwaysday'))
+                    msg.innerText = (msg.innerText.split(' camerashake').join(' run camerashake'))
+                    msg.innerText = (msg.innerText.split(' clear').join(' run clear'))
+                    msg.innerText = (msg.innerText.split(' clearspawnpoint').join(' run clearspawnpoint'))
+                    msg.innerText = (msg.innerText.split(' clone').join(' run clone'))
+                    msg.innerText = (msg.innerText.split(' connect').join(' run connect'))
+                    msg.innerText = (msg.innerText.split(' damage').join(' run damage'))
+                    msg.innerText = (msg.innerText.split(' daylock').join(' run daylock'))
+                    msg.innerText = (msg.innerText.split(' deop').join(' run deop'))
+                    msg.innerText = (msg.innerText.split(' dialogue').join(' run dialogue'))
+                    msg.innerText = (msg.innerText.split(' difficulty').join(' run difficulty'))
+                    msg.innerText = (msg.innerText.split(' effect').join(' run effect'))
+                    msg.innerText = (msg.innerText.split(' enchant').join(' run enchant'))
+                    msg.innerText = (msg.innerText.split(' event').join(' run event'))
+                    msg.innerText = (msg.innerText.split(' execute').join(' run execute'))
+                    msg.innerText = (msg.innerText.split(' fill').join(' run fill'))
+                    msg.innerText = (msg.innerText.split(' fog').join(' run fog'))
+                    msg.innerText = (msg.innerText.split(' function').join(' run function'))
+                    msg.innerText = (msg.innerText.split(' gamemode').join(' run gamemode'))
+                    msg.innerText = (msg.innerText.split(' gamerule').join(' run gamerule'))
+                    msg.innerText = (msg.innerText.split(' gametest').join(' run gametest'))
+                    msg.innerText = (msg.innerText.split(' give').join(' run give'))
+                    msg.innerText = (msg.innerText.split(' help').join(' run help'))
+                    msg.innerText = (msg.innerText.split(' immutableworld').join(' run immutableworld'))
+                    msg.innerText = (msg.innerText.split(' kick').join(' run kick'))
+                    msg.innerText = (msg.innerText.split(' kill').join(' run kill'))
+                    msg.innerText = (msg.innerText.split(' list').join(' run list'))
+                    msg.innerText = (msg.innerText.split(' locate').join(' run locate'))
+                    msg.innerText = (msg.innerText.split(' loot').join(' run loot'))
+                    msg.innerText = (msg.innerText.split(' me').join(' run me'))
+                    msg.innerText = (msg.innerText.split(' mobevent').join(' run mobevent'))
+                    msg.innerText = (msg.innerText.split(' msg').join(' run msg'))
+                    msg.innerText = (msg.innerText.split(' music').join(' run music'))
+                    msg.innerText = (msg.innerText.split(' op').join(' run op'))
+                    msg.innerText = (msg.innerText.split(' particle').join(' run particle'))
+                    msg.innerText = (msg.innerText.split(' playanimation').join(' run playanimation'))
+                    msg.innerText = (msg.innerText.split(' playsound').join(' run playsound'))
+                    msg.innerText = (msg.innerText.split(' reload').join(' run reload'))
+                    msg.innerText = (msg.innerText.split(' replaceitem').join(' run replaceitem'))
+                    msg.innerText = (msg.innerText.split(' ride').join(' run ride'))
+                    msg.innerText = (msg.innerText.split(' say').join(' run say'))
+                    msg.innerText = (msg.innerText.split(' schedule').join(' run schedule'))
+                    msg.innerText = (msg.innerText.split(' scoreboard').join(' run scoreboard'))
+                    msg.innerText = (msg.innerText.split(' script').join(' run script'))
+                    msg.innerText = (msg.innerText.split(' setblock').join(' run setblock'))
+                    msg.innerText = (msg.innerText.split(' setmaxplayers').join(' run setmaxplayers'))
+                    msg.innerText = (msg.innerText.split(' setworldspawn').join(' run setworldspawn'))
+                    msg.innerText = (msg.innerText.split(' spawnpoint').join(' run spawnpoint'))
+                    msg.innerText = (msg.innerText.split(' spreadplayers').join(' run spreadplayers'))
+                    msg.innerText = (msg.innerText.split(' stopsound').join(' run stopsound'))
+                    msg.innerText = (msg.innerText.split(' structure').join(' run structure'))
+                    msg.innerText = (msg.innerText.split(' summon').join(' run summon'))
+                    msg.innerText = (msg.innerText.split(' tag').join(' run tag'))
+                    msg.innerText = (msg.innerText.split(' teleport').join(' run teleport'))
+                    msg.innerText = (msg.innerText.split(' tell').join(' run tell'))
+                    msg.innerText = (msg.innerText.split(' tellraw').join(' run tellraw'))
+                    msg.innerText = (msg.innerText.split(' testfor').join(' run testfor'))
+                    msg.innerText = (msg.innerText.split(' testforblock').join(' run testforblock'))
+                    msg.innerText = (msg.innerText.split(' testforblocks').join(' run testforblocks'))
+                    msg.innerText = (msg.innerText.split(' tickingarea').join(' run tickingarea'))
+                    msg.innerText = (msg.innerText.split(' time').join(' run time'))
+                    msg.innerText = (msg.innerText.split(' title').join(' run title'))
+                    msg.innerText = (msg.innerText.split(' titleraw').join(' run titleraw'))
+                    msg.innerText = (msg.innerText.split(' toggledownfall').join(' run toggledownfall'))
+                    msg.innerText = (msg.innerText.split(' tp').join(' run tp'))
+                    msg.innerText = (msg.innerText.split(' w').join(' run w'))
+                    msg.innerText = (msg.innerText.split(' wb').join(' run wb'))
+                    msg.innerText = (msg.innerText.split(' weather').join(' run weather'))
+                    msg.innerText = (msg.innerText.split(' worldbuilder').join(' run worldbuilder'))
+                    msg.innerText = (msg.innerText.split(' wsserver').join(' run wsserver'))
+                    msg.innerText = (msg.innerText.split(' xp').join(' run '))
+
+
+                }
+                if (checkValue == 2){
+                    msg.innerText = (text.split('@').join('at @'))
+                    msg.innerText = (msg.innerText.split('~~~').join(''))
+                    msg.innerText = (msg.innerText.split('~ ~ ~').join(''))
+                    msg.innerText = (msg.innerText.split(' detect').join(' if block '))
+                    msg.innerText = (msg.innerText.split(' ability').join(' run ability'))
+                    msg.innerText = (msg.innerText.split(' alwaysday').join(' run alwaysday'))
+                    msg.innerText = (msg.innerText.split(' camerashake').join(' run camerashake'))
+                    msg.innerText = (msg.innerText.split(' clear').join(' run clear'))
+                    msg.innerText = (msg.innerText.split(' clearspawnpoint').join(' run clearspawnpoint'))
+                    msg.innerText = (msg.innerText.split(' clone').join(' run clone'))
+                    msg.innerText = (msg.innerText.split(' connect').join(' run connect'))
+                    msg.innerText = (msg.innerText.split(' damage').join(' run damage'))
+                    msg.innerText = (msg.innerText.split(' daylock').join(' run daylock'))
+                    msg.innerText = (msg.innerText.split(' deop').join(' run deop'))
+                    msg.innerText = (msg.innerText.split(' dialogue').join(' run dialogue'))
+                    msg.innerText = (msg.innerText.split(' difficulty').join(' run difficulty'))
+                    msg.innerText = (msg.innerText.split(' effect').join(' run effect'))
+                    msg.innerText = (msg.innerText.split(' enchant').join(' run enchant'))
+                    msg.innerText = (msg.innerText.split(' event').join(' run event'))
+                    msg.innerText = (msg.innerText.split(' execute').join(' run execute'))
+                    msg.innerText = (msg.innerText.split(' fill').join(' run fill'))
+                    msg.innerText = (msg.innerText.split(' fog').join(' run fog'))
+                    msg.innerText = (msg.innerText.split(' function').join(' run function'))
+                    msg.innerText = (msg.innerText.split(' gamemode').join(' run gamemode'))
+                    msg.innerText = (msg.innerText.split(' gamerule').join(' run gamerule'))
+                    msg.innerText = (msg.innerText.split(' gametest').join(' run gametest'))
+                    msg.innerText = (msg.innerText.split(' give').join(' run give'))
+                    msg.innerText = (msg.innerText.split(' help').join(' run help'))
+                    msg.innerText = (msg.innerText.split(' immutableworld').join(' run immutableworld'))
+                    msg.innerText = (msg.innerText.split(' kick').join(' run kick'))
+                    msg.innerText = (msg.innerText.split(' kill').join(' run kill'))
+                    msg.innerText = (msg.innerText.split(' list').join(' run list'))
+                    msg.innerText = (msg.innerText.split(' locate').join(' run locate'))
+                    msg.innerText = (msg.innerText.split(' loot').join(' run loot'))
+                    msg.innerText = (msg.innerText.split(' me').join(' run me'))
+                    msg.innerText = (msg.innerText.split(' mobevent').join(' run mobevent'))
+                    msg.innerText = (msg.innerText.split(' msg').join(' run msg'))
+                    msg.innerText = (msg.innerText.split(' music').join(' run music'))
+                    msg.innerText = (msg.innerText.split(' op').join(' run op'))
+                    msg.innerText = (msg.innerText.split(' particle').join(' run particle'))
+                    msg.innerText = (msg.innerText.split(' playanimation').join(' run playanimation'))
+                    msg.innerText = (msg.innerText.split(' playsound').join(' run playsound'))
+                    msg.innerText = (msg.innerText.split(' reload').join(' run reload'))
+                    msg.innerText = (msg.innerText.split(' replaceitem').join(' run replaceitem'))
+                    msg.innerText = (msg.innerText.split(' ride').join(' run ride'))
+                    msg.innerText = (msg.innerText.split(' say').join(' run say'))
+                    msg.innerText = (msg.innerText.split(' schedule').join(' run schedule'))
+                    msg.innerText = (msg.innerText.split(' scoreboard').join(' run scoreboard'))
+                    msg.innerText = (msg.innerText.split(' script').join(' run script'))
+                    msg.innerText = (msg.innerText.split(' setblock').join(' run setblock'))
+                    msg.innerText = (msg.innerText.split(' setmaxplayers').join(' run setmaxplayers'))
+                    msg.innerText = (msg.innerText.split(' setworldspawn').join(' run setworldspawn'))
+                    msg.innerText = (msg.innerText.split(' spawnpoint').join(' run spawnpoint'))
+                    msg.innerText = (msg.innerText.split(' spreadplayers').join(' run spreadplayers'))
+                    msg.innerText = (msg.innerText.split(' stopsound').join(' run stopsound'))
+                    msg.innerText = (msg.innerText.split(' structure').join(' run structure'))
+                    msg.innerText = (msg.innerText.split(' summon').join(' run summon'))
+                    msg.innerText = (msg.innerText.split(' tag').join(' run tag'))
+                    msg.innerText = (msg.innerText.split(' teleport').join(' run teleport'))
+                    msg.innerText = (msg.innerText.split(' tell').join(' run tell'))
+                    msg.innerText = (msg.innerText.split(' tellraw').join(' run tellraw'))
+                    msg.innerText = (msg.innerText.split(' testfor').join(' run testfor'))
+                    msg.innerText = (msg.innerText.split(' testforblock').join(' run testforblock'))
+                    msg.innerText = (msg.innerText.split(' testforblocks').join(' run testforblocks'))
+                    msg.innerText = (msg.innerText.split(' tickingarea').join(' run tickingarea'))
+                    msg.innerText = (msg.innerText.split(' time').join(' run time'))
+                    msg.innerText = (msg.innerText.split(' title').join(' run title'))
+                    msg.innerText = (msg.innerText.split(' titleraw').join(' run titleraw'))
+                    msg.innerText = (msg.innerText.split(' toggledownfall').join(' run toggledownfall'))
+                    msg.innerText = (msg.innerText.split(' tp').join(' run tp'))
+                    msg.innerText = (msg.innerText.split(' w').join(' run w'))
+                    msg.innerText = (msg.innerText.split(' wb').join(' run wb'))
+                    msg.innerText = (msg.innerText.split(' weather').join(' run weather'))
+                    msg.innerText = (msg.innerText.split(' worldbuilder').join(' run worldbuilder'))
+                    msg.innerText = (msg.innerText.split(' wsserver').join(' run wsserver'))
+                    msg.innerText = (msg.innerText.split(' xp').join(' run '))
+                }
+                if (checkValue == 1){
+                    msg.innerText = (text.split('@').join('as @'))
+                    msg.innerText = (msg.innerText.split('~~~').join(''))
+                    msg.innerText = (msg.innerText.split('~ ~ ~').join(''))
+                    msg.innerText = (msg.innerText.split(' detect').join(' if block '))
+                    msg.innerText = (msg.innerText.split(' ability').join(' run ability'))
+                    msg.innerText = (msg.innerText.split(' alwaysday').join(' run alwaysday'))
+                    msg.innerText = (msg.innerText.split(' camerashake').join(' run camerashake'))
+                    msg.innerText = (msg.innerText.split(' clear').join(' run clear'))
+                    msg.innerText = (msg.innerText.split(' clearspawnpoint').join(' run clearspawnpoint'))
+                    msg.innerText = (msg.innerText.split(' clone').join(' run clone'))
+                    msg.innerText = (msg.innerText.split(' connect').join(' run connect'))
+                    msg.innerText = (msg.innerText.split(' damage').join(' run damage'))
+                    msg.innerText = (msg.innerText.split(' daylock').join(' run daylock'))
+                    msg.innerText = (msg.innerText.split(' deop').join(' run deop'))
+                    msg.innerText = (msg.innerText.split(' dialogue').join(' run dialogue'))
+                    msg.innerText = (msg.innerText.split(' difficulty').join(' run difficulty'))
+                    msg.innerText = (msg.innerText.split(' effect').join(' run effect'))
+                    msg.innerText = (msg.innerText.split(' enchant').join(' run enchant'))
+                    msg.innerText = (msg.innerText.split(' event').join(' run event'))
+                    msg.innerText = (msg.innerText.split(' execute').join(' run execute'))
+                    msg.innerText = (msg.innerText.split(' fill').join(' run fill'))
+                    msg.innerText = (msg.innerText.split(' fog').join(' run fog'))
+                    msg.innerText = (msg.innerText.split(' function').join(' run function'))
+                    msg.innerText = (msg.innerText.split(' gamemode').join(' run gamemode'))
+                    msg.innerText = (msg.innerText.split(' gamerule').join(' run gamerule'))
+                    msg.innerText = (msg.innerText.split(' gametest').join(' run gametest'))
+                    msg.innerText = (msg.innerText.split(' give').join(' run give'))
+                    msg.innerText = (msg.innerText.split(' help').join(' run help'))
+                    msg.innerText = (msg.innerText.split(' immutableworld').join(' run immutableworld'))
+                    msg.innerText = (msg.innerText.split(' kick').join(' run kick'))
+                    msg.innerText = (msg.innerText.split(' kill').join(' run kill'))
+                    msg.innerText = (msg.innerText.split(' list').join(' run list'))
+                    msg.innerText = (msg.innerText.split(' locate').join(' run locate'))
+                    msg.innerText = (msg.innerText.split(' loot').join(' run loot'))
+                    msg.innerText = (msg.innerText.split(' me').join(' run me'))
+                    msg.innerText = (msg.innerText.split(' mobevent').join(' run mobevent'))
+                    msg.innerText = (msg.innerText.split(' msg').join(' run msg'))
+                    msg.innerText = (msg.innerText.split(' music').join(' run music'))
+                    msg.innerText = (msg.innerText.split(' op').join(' run op'))
+                    msg.innerText = (msg.innerText.split(' particle').join(' run particle'))
+                    msg.innerText = (msg.innerText.split(' playanimation').join(' run playanimation'))
+                    msg.innerText = (msg.innerText.split(' playsound').join(' run playsound'))
+                    msg.innerText = (msg.innerText.split(' reload').join(' run reload'))
+                    msg.innerText = (msg.innerText.split(' replaceitem').join(' run replaceitem'))
+                    msg.innerText = (msg.innerText.split(' ride').join(' run ride'))
+                    msg.innerText = (msg.innerText.split(' say').join(' run say'))
+                    msg.innerText = (msg.innerText.split(' schedule').join(' run schedule'))
+                    msg.innerText = (msg.innerText.split(' scoreboard').join(' run scoreboard'))
+                    msg.innerText = (msg.innerText.split(' script').join(' run script'))
+                    msg.innerText = (msg.innerText.split(' setblock').join(' run setblock'))
+                    msg.innerText = (msg.innerText.split(' setmaxplayers').join(' run setmaxplayers'))
+                    msg.innerText = (msg.innerText.split(' setworldspawn').join(' run setworldspawn'))
+                    msg.innerText = (msg.innerText.split(' spawnpoint').join(' run spawnpoint'))
+                    msg.innerText = (msg.innerText.split(' spreadplayers').join(' run spreadplayers'))
+                    msg.innerText = (msg.innerText.split(' stopsound').join(' run stopsound'))
+                    msg.innerText = (msg.innerText.split(' structure').join(' run structure'))
+                    msg.innerText = (msg.innerText.split(' summon').join(' run summon'))
+                    msg.innerText = (msg.innerText.split(' tag').join(' run tag'))
+                    msg.innerText = (msg.innerText.split(' teleport').join(' run teleport'))
+                    msg.innerText = (msg.innerText.split(' tell').join(' run tell'))
+                    msg.innerText = (msg.innerText.split(' tellraw').join(' run tellraw'))
+                    msg.innerText = (msg.innerText.split(' testfor').join(' run testfor'))
+                    msg.innerText = (msg.innerText.split(' testforblock').join(' run testforblock'))
+                    msg.innerText = (msg.innerText.split(' testforblocks').join(' run testforblocks'))
+                    msg.innerText = (msg.innerText.split(' tickingarea').join(' run tickingarea'))
+                    msg.innerText = (msg.innerText.split(' time').join(' run time'))
+                    msg.innerText = (msg.innerText.split(' title').join(' run title'))
+                    msg.innerText = (msg.innerText.split(' titleraw').join(' run titleraw'))
+                    msg.innerText = (msg.innerText.split(' toggledownfall').join(' run toggledownfall'))
+                    msg.innerText = (msg.innerText.split(' tp').join(' run tp'))
+                    msg.innerText = (msg.innerText.split(' w').join(' run w'))
+                    msg.innerText = (msg.innerText.split(' wb').join(' run wb'))
+                    msg.innerText = (msg.innerText.split(' weather').join(' run weather'))
+                    msg.innerText = (msg.innerText.split(' worldbuilder').join(' run worldbuilder'))
+                    msg.innerText = (msg.innerText.split(' wsserver').join(' run wsserver'))
+                    msg.innerText = (msg.innerText.split(' xp').join(' run xp'))
+                }
+            }
+
+            let js_txa = document.getElementById("js_txa");
+            js_txa.addEventListener('input', inputChange);
+
+            
+        
+            // ------------------------------------------------------------
+            // ラジオボタンのリストを取得する関数（名前指定）
+            // ------------------------------------------------------------
+            function FormElement_GetRadioButtonList_ByName(form , name){
+                if(form.getElementsByName){
+                    return form.getElementsByName(name);
+                }
+                var result = form[name];
+                if(!result) return [];
+                if(result.length) return result;
+                return [result];
+            }
+        
+            // ------------------------------------------------------------
+            // 選択中のラジオボタンの位置を取得する関数
+            // ------------------------------------------------------------
+            function RadioButtonList_GetSelectedIndex(elements){
+                var i;
+                var num = elements.length;
+                for(i=0;i < num;i++){
+                    if(elements[i].checked) return i;
+                }
+                return -1;
+            }
+        
+            // ------------------------------------------------------------
+            // ラジオボタンを選択する関数（位置指定）
+            // ------------------------------------------------------------
+            function RadioButtonList_SetSelectedIndex(elements , index){
+                if(elements[index]){
+                    elements[index].checked = true;
+                    inputChange();
+                }else{
+                    var i;
+                    var num = elements.length;
+                    for(i=0;i < num;i++){
+                        elements[i].checked = false;
+                    }
+                }
+            }
+        
+        
+            // ------------------------------------------------------------
+            // "my_form" という ID 属性のエレメントを取得する
+            // ------------------------------------------------------------
+            var form = document.getElementById("my_form");
+        
+            // ------------------------------------------------------------
+            // ラジオボタンのリストを取得する（名前指定）
+            // ------------------------------------------------------------
+            var radio_button_list = FormElement_GetRadioButtonList_ByName(form , "my_radio");
+        
+            // ------------------------------------------------------------
+            // ラジオボタンを選択する（位置指定）
+            // ------------------------------------------------------------
+            RadioButtonList_SetSelectedIndex(radio_button_list , 3);
+        
+             // ------------------------------------------------------------
+            // 選択中のラジオボタンの位置を取得する
+            // ------------------------------------------------------------
+            var index = RadioButtonList_GetSelectedIndex(radio_button_list);
+        
+            // 出力テスト
+            console.log(index); // 3
+        
+            
+            //-->
+})();
+        </script>
+    </body>
+</html>
