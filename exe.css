@@ -7,6 +7,8 @@
     padding: 10px 20px;
     text-decoration: none;
 }
-.txa.value{
+.txa{
     text-align: center;
+    width: 500px;
+    height: 50px;
 }
