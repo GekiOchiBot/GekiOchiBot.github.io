@@ -1,0 +1,12 @@
+.msg_out {
+    border:10px rgb(0, 0, 0);
+    width: 1000px;
+    margin-right: 2px;
+    background: #ccc;
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+.txa.value{
+    text-align: center;
+}
